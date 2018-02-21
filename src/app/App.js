@@ -1,19 +1,25 @@
 import React, { Component } from 'react';
 import { Route, Link } from 'react-router-dom'
-import logo from './logo.svg';
+import { withStyles } from 'material-ui/styles';
+
+import Header from '../components/Header.js';
 import Home from '../home/Home.js';
 import About from '../about/About.js';
 import './App.css';
 
+const styles = {
+  root : {
+    marginTop: 24
+  }
+}
+
 class App extends Component {
   render() {
+    const { classes } = this.props;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <main>
+        <Header/>
+        <main className={classes.root}>
           <Link to="/">Home</Link>
           <Link to="/about-us">About</Link>
 
@@ -25,4 +31,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default withStyles(styles)(App);
