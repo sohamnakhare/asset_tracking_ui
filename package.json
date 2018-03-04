@@ -1,7 +1,6 @@
 {
   "name": "asset_tracking",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "axios": "^0.18.0",
     "load-google-maps-api": "^1.1.1",
