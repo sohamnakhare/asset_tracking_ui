@@ -8,7 +8,6 @@ const styles = theme => ({
     paper: {
         padding: theme.spacing.unit * 2,
         textAlign: 'left',
-        color: theme.palette.text.secondary,
         cursor: 'pointer'
     },
     bottomSpacing: {
@@ -20,9 +19,9 @@ function TourWidget(props) {
     const { classes } = props;
     return (
         <Grid item xs={12} sm={4} md={3}>
-            <Paper className={classes.paper}>
+            <Paper {...props} className={classes.paper}>
                 <div className={classes.bottomSpacing}>
-                    <strong>{props.tourId}</strong>
+                    <strong>{props.tourName}</strong>
                 </div>
                 <div className={classes.bottomSpacing}>
                     <strong>Start Date: </strong>{moment(props.tourStartDate).format('DD-MMM-YYYY')}
