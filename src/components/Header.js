@@ -5,17 +5,17 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
 
-const styles = {
+const styles = theme => ({
   root: {
-    flexGrow: 1,
-  },
-};
+    flexGrow: 1
+  }
+});
 
 function Header(props) {
   const { classes } = props;
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
+      <AppBar position="static" color="primary">
         <Toolbar>
           <Typography variant="title" color="inherit">
             <h2>Asset Tracking</h2>

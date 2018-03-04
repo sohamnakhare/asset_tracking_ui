@@ -7,18 +7,30 @@ function dataProvider(WrappedComponent) {
       constructor(props) {
         super(props);
         this.state = {
-          trucks: []
+          tourDetails: {},
+          gps: {}
         };
 
-        this.getTrucks = this.getTrucks.bind(this);
+        this.getTourDetails = this.getTourDetails.bind(this);
+        this.getCurrentLocation = this.getCurrentLocation.bind(this);
       }
 
-      getTrucks(tourId, startDate) {
-        const url = apiBaseUrl + '/truck?tourId='+tourId+'&startDate='+startDate;
+      getTourDetails(tourId) {
+        const url = apiBaseUrl + `/tours/${tourId}`
         axios.get(url)
         .then((res)=>{
-            console.log('res: ', res);
-          this.setState({trucks: res.data});
+          this.setState({tourDetails: res.data});
+        })
+        .catch((err)=>{
+          console.log('error: ', err)
+        });
+      }
+
+      getCurrentLocation(tourId, truckId) {
+        const url = apiBaseUrl + `/gps/${tourId}/${truckId}?latest=true`;
+        axios.get(url)
+        .then((res)=>{
+          this.setState({gps: res.data});
         })
         .catch((err)=>{
           console.log('error: ', err)
@@ -30,7 +42,8 @@ function dataProvider(WrappedComponent) {
             <WrappedComponent
               {...this.props}
               {...this.state}
-              getTrucks={this.getTrucks}/>
+              getTourDetails={this.getTourDetails}
+              getCurrentLocation={this.getCurrentLocation}/>
           );
       }
     }

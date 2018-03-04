@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
 import { withStyles } from 'material-ui/styles';
+import teal from 'material-ui/colors/teal';
+import grey from 'material-ui/colors/grey';
+import 'typeface-roboto'
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import Header from '../components/Header.js';
 import SearchTours from '../searchtours/SearchTours.js';
@@ -9,11 +12,17 @@ import './App.css';
 
 const styles = {
   root : {
-    marginTop: 24
+    marginTop: 24,
+    padding: 50
   }
 }
 
-const theme = createMuiTheme({});
+const theme = createMuiTheme({
+  palette: {
+    primary: teal,
+    secondary: grey
+  }
+});
 
 class App extends Component {
   render() {
@@ -24,7 +33,7 @@ class App extends Component {
           <Header/>
           <main className={classes.root}>
             <Route exact path="/" component={SearchTours} />
-            <Route exact path="/tour-details/:tourId/:startDate" component={TourDetails} />
+            <Route exact path="/tour-details/:tourId" component={TourDetails} />
           </main>
         </div>
       </MuiThemeProvider>
