@@ -18,7 +18,7 @@ const styles = theme => ({
         flexGrow: 1
     },
     heading: {
-        fontSize: theme.typography.pxToRem(24),
+        fontSize: theme.typography.pxToRem(20),
         fontWeight: theme.typography.fontWeightRegular,
     },
     textLeft: {
@@ -105,6 +105,7 @@ function GoodsList(props) {
                                 <br/>
                                 <br/>
                                 <Typography className={classes.heading}>
+									Delivery location: {good.deliveryPointName}{'\u00A0'} | {'\u00A0'}
                                     Avg. temprature: {good.tempratureThresholdAvg}{'\u00A0'} | {'\u00A0'}
                                     Avg. humidity: {good.humidityThresholdAvg}{'\u00A0'} | {'\u00A0'}
                                     Health: <span style={{color: '#4CAF50'}}>
