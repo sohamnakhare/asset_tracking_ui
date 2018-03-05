@@ -13,7 +13,8 @@ import './App.css';
 const styles = {
   root : {
     marginTop: 24,
-    padding: 50
+    padding: 50,
+    paddingTop: 0
   }
 }
 
