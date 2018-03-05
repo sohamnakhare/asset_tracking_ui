@@ -8,7 +8,8 @@ import ToursDataProvider from './ToursDataProvider.js';
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        padding: 12
+        padding: 12,
+        textAlign: 'left'
     }
 });
 
@@ -27,6 +28,7 @@ class SearchTours extends Component {
         const { classes } = this.props;
         return (
             <div className={classes.root}>
+                <h2>Ongoing Tours</h2>
                 <Grid container spacing={24}>
                     {
                         this.props.tours.map((tour, i) =>

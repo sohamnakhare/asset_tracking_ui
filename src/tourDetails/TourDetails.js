@@ -9,10 +9,14 @@ import GoodsList from './GoodsList.js';
 const styles = theme => ({
     root: {
         flexGrow: 1,
-        padding: 12
+        padding: 12,
+        textAlign: 'left'
     },
     textLeft: {
         textAlign: 'left'
+    },
+    pullRight: {
+        float: 'right'
     }
 });
 
@@ -34,7 +38,7 @@ class TourDetails extends React.Component {
     render() {
         const { classes } = this.props;
         return (
-            <div>
+            <div className={classes.textLeft}>
                 <TourLocation {...this.props}/>
                 <div className={classes.root}>
                     <Grid container spacing={24}>

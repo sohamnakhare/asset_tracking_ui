@@ -29,24 +29,24 @@ function renderTemprature(props) {
     const { classes } = props;
     const data = {
         types: {
-            data1: 'area-spline'
+            Temprature: 'area-spline'
         },
         columns: [
-            ['data1', 30, 200, 100, 400, 150, 250]
+            ['Temprature', 10, 10, 12, 14, 14, 11]
         ]
     };
     return (
         <div className={classes.textLeft}>
             <h2>Temprature Information</h2>
-            <Card className={classes.root}>
+            <div className={classes.root}>
                 <C3 data={data}/>
-                <CardContent>
-                    <h3>Temprature threshole max: 1000</h3>
-                    <h3>Temprature threshole min: 800</h3>
-                    <h3>Average temprature maintained: 890</h3>
-                    <h3>Health: Good</h3>
-                </CardContent>
-            </Card>
+                <div>
+                    <h3>Temprature threshole max: 15 &deg;C</h3>
+                    <h3>Temprature threshole min: 10 &deg;C</h3>
+                    <h3>Average temprature maintained: 11 &deg;C</h3>
+                    <h3>Health: <span>Good</span></h3>
+                </div>
+            </div>
         </div>
     )
 }
@@ -55,24 +55,24 @@ function renderHumidity(props) {
     const { classes } = props;
     const data = {
         types: {
-            data2: 'area-spline'
+            Humidity: 'area-spline'
         },
         columns: [
-            ['data2', 50, 20, 10, 40, 15, 25]
+            ['Humidity', 20, 30, 25, 26, 22, 23]
         ]
     };
     return (
         <div className={classes.textLeft}>
             <h2>Humidity Information</h2>
-            <Card className={classes.root}>
+            <div className={classes.root}>
                 <C3 data={data}/>
-                <CardContent>
-                    <h3>Humidity threshole max: 1000</h3>
-                    <h3>Humidity threshole min: 800</h3>
-                    <h3>Average humidity maintained: 890</h3>
+                <div>
+                    <h3>Humidity threshole max: 35 g/m<sup>3</sup></h3>
+                    <h3>Humidity threshole min: 18 g/m<sup>3</sup></h3>
+                    <h3>Average humidity maintained: 25 g/m<sup>3</sup></h3>
                     <h3>Health: Good</h3>
-                </CardContent>
-            </Card>
+                </div>
+            </div>
         </div>
     )
 }
