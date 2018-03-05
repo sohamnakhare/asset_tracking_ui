@@ -9,6 +9,7 @@ import C3 from 'react-c3js';
 import 'c3/c3.css';
 import Typography from 'material-ui/Typography';
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore';
+import SuccessIcon from 'material-ui-icons/Check';
 import Grid from 'material-ui/Grid';
 
 const styles = theme => ({
@@ -25,7 +26,7 @@ const styles = theme => ({
     }
 });
 
-function renderTemprature(props) {
+function renderTemprature(props, good) {
     const { classes } = props;
     const data = {
         types: {
@@ -41,17 +42,19 @@ function renderTemprature(props) {
             <div className={classes.root}>
                 <C3 data={data}/>
                 <div>
-                    <h3>Temprature threshole max: 15 &deg;C</h3>
-                    <h3>Temprature threshole min: 10 &deg;C</h3>
-                    <h3>Average temprature maintained: 11 &deg;C</h3>
-                    <h3>Health: <span>Good</span></h3>
+                    <h3>Temprature threshole max: {good.tempratureThresholdMax} &deg;C</h3>
+                    <h3>Temprature threshole min: {good.tempratureThresholdMin} &deg;C</h3>
+                    <h3>Average temprature maintained: {good.tempratureThresholdAvg} &deg;C</h3>
+                    <h3>Health: <span style={{color: '#4CAF50'}}>
+                                        Good
+                                    </span></h3>
                 </div>
             </div>
         </div>
     )
 }
 
-function renderHumidity(props) {
+function renderHumidity(props, good) {
     const { classes } = props;
     const data = {
         types: {
@@ -67,10 +70,12 @@ function renderHumidity(props) {
             <div className={classes.root}>
                 <C3 data={data}/>
                 <div>
-                    <h3>Humidity threshole max: 35 g/m<sup>3</sup></h3>
-                    <h3>Humidity threshole min: 18 g/m<sup>3</sup></h3>
-                    <h3>Average humidity maintained: 25 g/m<sup>3</sup></h3>
-                    <h3>Health: Good</h3>
+                    <h3>Humidity threshole max: {good.humidityThresholdMax} g/m<sup>3</sup></h3>
+                    <h3>Humidity threshole min: {good.humidityThresholdMin} g/m<sup>3</sup></h3>
+                    <h3>Average humidity maintained: {good.humidityThresholdAvg} g/m<sup>3</sup></h3>
+                    <h3>Health: <span style={{color: '#4CAF50'}}>
+                                        Good
+                                    </span></h3>
                 </div>
             </div>
         </div>
@@ -93,18 +98,31 @@ function GoodsList(props) {
                         good => 
                         <ExpansionPanel>
                             <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
-                            <Typography className={classes.heading}>{good.item}</Typography>
+                            <Typography className={classes.heading}>
+                                {good.item} {'\u00A0'}
+                            </Typography>
+                            <div>
+                                <br/>
+                                <br/>
+                                <Typography className={classes.heading}>
+                                    Avg. temprature: {good.tempratureThresholdAvg}{'\u00A0'} | {'\u00A0'}
+                                    Avg. humidity: {good.humidityThresholdAvg}{'\u00A0'} | {'\u00A0'}
+                                    Health: <span style={{color: '#4CAF50'}}>
+                                        Good
+                                    </span>
+                                </Typography>
+                            </div>
                             </ExpansionPanelSummary>
                             <ExpansionPanelDetails>
                             <Grid container spacing={24}>
                                 <Grid item xs={12} sm={6} md={6}>
                                     {
-                                        renderTemprature(props)
+                                        renderTemprature(props, good)
                                     }
                                 </Grid>
                                 <Grid item xs={12} sm={6} md={6}>
                                     {
-                                        renderHumidity(props)
+                                        renderHumidity(props, good)
                                     }
                                 </Grid>
                             </Grid>

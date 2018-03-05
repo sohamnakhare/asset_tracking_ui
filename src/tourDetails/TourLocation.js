@@ -17,6 +17,10 @@ const styles = theme => ({
     },
     legendItem: {
         marginBottom: 5
+    },
+    legendText: {
+        position: 'relative',
+        top: -15
     }
 });
 
@@ -47,11 +51,11 @@ class TourLocation extends React.Component {
                 <h4>Legend</h4>
                 <div className={classes.legendItem}>
                     <img src="http://maps.google.com/mapfiles/ms/icons/blue-dot.png"/>
-                    <strong>current location</strong>
+                    <strong className={classes.legendText}>current location</strong>
                 </div>
                 <div className={classes.legendItem}>
                     <img src="http://maps.google.com/mapfiles/ms/icons/red-dot.png"/>
-                    <strong>delivery points</strong>
+                    <strong className={classes.legendText}>delivery points</strong>
                 </div>
             </div>
             <GoogleMaps config={mapSettings}/>
